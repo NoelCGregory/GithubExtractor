@@ -1,0 +1,337 @@
+<!doctype html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+    
+        <title>Report</title>
+    
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <!-- Custom styles for this template -->
+      </head>
+    <style>
+    body {
+      font-size: .875rem;
+    }
+    
+
+    .dark{
+      background-color:#2C3034;
+      color:white;
+    }
+    
+    /*
+     * Sidebar
+     */
+    
+    .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width:18vh;
+      left: 0;
+      z-index: 100; /* Behind the navbar */
+      padding: 0;
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+    }
+    
+    .sidebar-sticky {
+      position: -webkit-sticky;
+      position: sticky;
+      top: 48px; /* Height of navbar */
+      height: calc(100vh - 48px);
+      padding-top: .5rem;
+      overflow-x: hidden;
+      overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    }
+    
+    .sidebar .nav-link {
+      font-weight: 500;
+      color: #333;
+    }
+    
+    .sidebar .nav-link .feather {
+      margin-right: 4px;
+      color: #999;
+    }
+    
+    .sidebar .nav-link.active {
+      color: #007bff;
+    }
+    
+    .sidebar .nav-link:hover .feather,
+    .sidebar .nav-link.active .feather {
+      color: inherit;
+    }
+    
+    .sidebar-heading {
+      font-size: .75rem;
+      text-transform: uppercase;
+    }
+    .large{
+      font-size:12px;
+      font-weight: normal;
+    }
+    /*
+     * Navbar
+     */
+    .btn-d{
+      background-color: #343A40;
+      color:white;
+    }
+    .btn-d:hover{
+      color:white;
+      opacity: .9;
+    }
+    .navbar-brand {
+      padding-top: .75rem;
+      padding-bottom: .75rem;
+      font-size: 1rem;
+      background-color: rgba(0, 0, 0, .25);
+      box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+    }
+    .modal-body{
+      word-break: break-all;
+    }
+    .navbar .form-control {
+      padding: .75rem 1rem;
+      border-width: 0;
+      border-radius: 0;
+    }
+    
+    .form-control-dark {
+      color: #fff;
+      background-color: rgba(255, 255, 255, .1);
+      border-color: rgba(255, 255, 255, .1);
+    }
+    
+    .form-control-dark:focus {
+      border-color: transparent;
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+    }
+
+    .border-top { border-top: 1px solid #e5e5e5; }
+    .border-bottom { border-bottom: 1px solid #e5e5e5; }
+    
+
+
+
+#wrapper{
+    position:absolute;
+    /*background:#333;*/
+    height:100%;
+}
+
+.profile-main-loader{
+    left: 50% !important;
+    margin-left:-100px;
+    position: fixed !important;
+    top: 38% !important;
+    margin-top: -100px;
+    width: 45px;
+    z-index: 9000 !important;
+}
+
+.profile-main-loader .loader {
+  position: relative;
+  margin: 0px auto;
+  width: 200px;
+  height:200px;
+}
+.profile-main-loader .loader:before {
+  content: '';
+  display: block;
+  padding-top: 100%;
+}
+
+.circular-loader {
+  -webkit-animation: rotate 2s linear infinite;
+          animation: rotate 2s linear infinite;
+  height: 100%;
+  -webkit-transform-origin: center center;
+      -ms-transform-origin: center center;
+          transform-origin: center center;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: auto;
+}
+
+.loader-path {
+  stroke-dasharray: 150,200;
+  stroke-dashoffset: -10;
+  -webkit-animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+          animation: dash 1.5s ease-in-out infinite, color 6s ease-in-out infinite;
+  stroke-linecap: round;
+}
+
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
+}
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
+}
+@-webkit-keyframes color {
+  0% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  40% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  66% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  80%, 90% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+}
+@keyframes color {
+  0% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  40% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  66% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+  80%, 90% {
+    stroke: rgba(0, 0, 0, .25);
+  }
+}
+
+    </style>
+      <body>
+        <div id="wrapper">
+    
+          <div class="profile-main-loader">
+            <div class="loader">
+              <svg class="circular-loader"viewBox="25 25 50 50" >
+                <circle class="loader-path" cx="50" cy="50" r="20" fill="none" stroke="#70c542" stroke-width="7" />
+              </svg>
+            </div>
+          </div>
+              
+          </div>
+
+        <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+          <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Test Report</a>
+          <input class="form-control form-control-dark w-100" type="text" id="searchInput" placeholder="Search" aria-label="Search">
+          <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+              <a onclick="this.href='data:text/html;charset=UTF-8,'+encodeURIComponent(document.documentElement.outerHTML)" download="index.html" class="nav-link" style="font-size:16px;">Download</a>
+            </li>
+          </ul>
+        </nav>
+    
+        <div class="container-fluid">
+          <div class="row">
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+              <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="index.html">
+                      Reports
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="runner.html">
+                      Runner
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+    
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-11 pt-3 px-4">
+              <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+                <h1 class="h2">Report</h1>
+              </div>
+              <div class="row">
+              <div class="col-3"><div class="col-xs-3 text-center"><canvas id="piechart"></canvas><div class="form-check">
+                <input type="checkbox" class="form-check-input" id="switchChart">
+                <label class="form-check-label" id="switchLabel" >Switch To pie graph</label>
+              </div></div></div>
+              <div class="col-3"><table class="table">
+              <tbody id="testStatus">     
+              </tbody>
+            </table></div>
+            <div class="col-3"><table class="table">
+              <tbody id="testDetail">
+              </tbody>
+            </table></div>
+           </div>
+            
+              <h2>Top Errors</h2>
+              <hr>
+              <div class="table-responsive sticky">
+                <table class="table sticky">
+                <thead class="thead-dark sticky">
+                    <tr>
+                      <th>Error</th>
+                      <th>Range</th>
+                      <th>Tester</th>
+                      <th>Number of Times</th>
+                      <th>Url</th>
+                    </tr>
+                  </thead>
+                  <tbody id="unitTest">
+                  </tbody>
+                </table>
+              </div>
+            </main>
+          </div>
+        </div>
+    
+    <script src="./errors.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+    <!-- Graphs -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js'></script>
+    
+  
+    
+      </body>
+    </html>
